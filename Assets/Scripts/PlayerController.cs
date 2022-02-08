@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direccion = new Vector3(horizontal, 0f, vertical).normalized; //Normalized es para que al moverse en diagonal no vaya más rápido
+        Vector3 direccion = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direccion.magnitude >= 0.1f)
         {
