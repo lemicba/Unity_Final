@@ -12,10 +12,9 @@ public class LogicGetObject : MonoBehaviour
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo))
             {
-                if(hitInfo.collider.gameObject.tag == "Object" && hitInfo.collider.gameObject.GetComponent<Inventary>().destroyWithCursor == true)
+                if(hitInfo.collider.gameObject.tag == "Object" && hitInfo.collider.gameObject.GetComponent<PowerUps>().destroyWithCursor == true)
                 {
-                    //Debug.Log(hitInfo.collider.gameObject.tag);
-                    hitInfo.collider.gameObject.GetComponent<Inventary>().Efecto();
+                    hitInfo.collider.gameObject.GetComponent<PowerUps>().Efecto();
                     Destroy(hitInfo.collider.gameObject);
                 }
             }
@@ -24,17 +23,17 @@ public class LogicGetObject : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Object" && other.GetComponent<Inventary>().destroyAutomatic == true)
+        if (other.tag == "Object" && other.GetComponent<PowerUps>().destroyAutomatic == true)
         {
-            other.GetComponent<Inventary>().Efecto();
+            other.GetComponent<PowerUps>().Efecto();
             Destroy(other.gameObject);
         }
 
         if(other.tag == "object")
         {
-            if(Input.GetMouseButtonDown(1) && other.GetComponent<Inventary>().destroyWithCursor == false)
+            if(Input.GetMouseButtonDown(1) && other.GetComponent<PowerUps>().destroyWithCursor == false)
             {
-                other.GetComponent<Inventary>().Efecto();
+                other.GetComponent<PowerUps>().Efecto();
                 Destroy(other.gameObject);
             }
         }

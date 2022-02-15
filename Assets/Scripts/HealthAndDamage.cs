@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class HealthAndDamage : MonoBehaviour
 {
-    public int health = 100;
+    public int health = 3;
     public bool invincible = false;
     public float tiempo = 1f;
     public float timeStopped = 0.2f;
+    public int lifePublic;
 
     private Animator anim;
 
@@ -18,6 +19,7 @@ public class HealthAndDamage : MonoBehaviour
 
     private void Update()
     {
+        lifePublic = health;
         if (health <= 0)
         {
             GameManager.instance.SetCurrentState(GameManager.gameState.GameOver);
@@ -36,6 +38,7 @@ public class HealthAndDamage : MonoBehaviour
         if (!invincible && health > 0 && tiempo != 0)
         {
             health -= amountDamage;
+            Life.heart.ReduceHeart();
             anim.Play("Damage");
             invincible = true;
             StartCoroutine(StopVelocity());

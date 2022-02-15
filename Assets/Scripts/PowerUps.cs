@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventary : MonoBehaviour
+public class PowerUps : MonoBehaviour
 {
     public bool destroyWithCursor;
     public bool destroyAutomatic;
