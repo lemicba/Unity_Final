@@ -15,13 +15,24 @@ public class PlayerController : MonoBehaviour
     public bool running;
 
     public Transform chequeadorDeSuelo;
+    public Transform originRay;
     public float distanciaAlSuelo;
     public LayerMask mascaraDeSuelo;
     bool estaEnElSuelo;
 
     Vector3 velocidad;
-
-
+    public static PlayerController player = null;
+    private void Awake()
+    {
+        if(player == null)
+        {
+            player = this;
+        } else if ( player != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     void Update()
     {
 
@@ -56,6 +67,32 @@ public class PlayerController : MonoBehaviour
 
         velocidad.y += gravedad * Time.deltaTime;
         controlador.Move(velocidad * Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 originRay = transform.position + new Vector3(0.0f, 1.0f);
+        RaycastHit hit;
+
+        if (Physics.Raycast(originRay, transform.TransformDirection(Vector3.forward), out hit, 5.0f))
+        {
+            Debug.DrawRay(originRay, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+
+            if(hit.collider.gameObject.tag == "IA" && hit.distance < 5)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    hit.collider.gameObject.GetComponent<EnemyOne>().pressBtn = true;
+                }else
+                {
+                    hit.collider.gameObject.GetComponent<EnemyOne>().pressBtn = false;
+                }
+            }
+        }
+        else
+        {
+            Debug.DrawRay(originRay, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
+        }
     }
 
 }

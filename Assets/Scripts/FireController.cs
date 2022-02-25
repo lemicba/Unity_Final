@@ -17,7 +17,11 @@ public class FireController : MonoBehaviour
         }
         if (!isColl)
         {
+<<<<<<< HEAD
+            //Debug.Log("no quemado");
+=======
             Debug.Log("no quemado");
+>>>>>>> main
         }
     }
 
