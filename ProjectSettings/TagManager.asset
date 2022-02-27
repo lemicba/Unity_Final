@@ -6,19 +6,16 @@ TagManager:
   tags:
   - Object
   - IA
+  - ObjectEvents
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - PostProcesing
   - Water
   - UI
-  - Fire
-<<<<<<< HEAD
-  - Enemys
-=======
   - 
->>>>>>> main
+  - 
   - 
   - 
   - 

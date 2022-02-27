@@ -11,7 +11,6 @@ public class ActiveWeaponCharacter : MonoBehaviour
         getWeapons = GameObject.FindGameObjectWithTag("Player").GetComponent<GetWeapons>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

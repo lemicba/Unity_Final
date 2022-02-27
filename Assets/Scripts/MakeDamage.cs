@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class MakeDamage : MonoBehaviour
 {
-<<<<<<< HEAD
     public int amount = 1;
-=======
-    public int amount = 10;
->>>>>>> main
 
     private void OnTriggerEnter(Collider other)
     {
